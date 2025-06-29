@@ -10,21 +10,21 @@ export const categories: Category[] = [
         id: 1,
         name: 'Camiseta Família Personalizada',
         description: 'Designs exclusivos para toda a família com estampas durabilíssimas',
-        image: '/images/camiseta-familia.jpg',
+        image: 'https://picsum.photos/800/600?random=1',
         tags: ['família', 'presente', 'personalizado']
       },
       {
         id: 2,
         name: 'Camiseta Casal Romântica',
         description: 'Estampas especiais para casais apaixonados',
-        image: '/images/camiseta-casal.jpg',
+        image: 'https://picsum.photos/800/600?random=2',
         tags: ['casal', 'romance', 'presente']
       },
       {
         id: 3,
         name: 'Camiseta Infantil Divertida',
         description: 'Designs coloridos e divertidos para os pequenos',
-        image: '/images/camiseta-infantil.jpg',
+        image: 'https://picsum.photos/800/600?random=3',
         tags: ['infantil', 'colorido', 'divertido']
       },
       {
@@ -73,7 +73,7 @@ export const categories: Category[] = [
         id: 9,
         name: 'Caneca Mágica Personalizada',
         description: 'Caneca que muda de cor com líquidos quentes',
-        image: '/images/caneca-magica.jpg',
+        image: 'https://picsum.photos/800/600?random=9',
         tags: ['mágica', 'presente', 'inovador']
       },
       {
@@ -136,7 +136,7 @@ export const categories: Category[] = [
         id: 17,
         name: 'Chaveiro Foto Personalizado',
         description: 'Chaveiros com suas fotos favoritas em acrílico resistente',
-        image: '/images/chaveiro-foto.jpg',
+        image: 'https://picsum.photos/800/600?random=17',
         tags: ['foto', 'acrílico', 'resistente']
       },
       {
@@ -199,7 +199,7 @@ export const categories: Category[] = [
         id: 25,
         name: 'Quadro Família Personalizado',
         description: 'Quadros com fotos da família em alta resolução',
-        image: '/images/quadro-familia.jpg',
+        image: 'https://picsum.photos/800/600?random=25',
         tags: ['quadro', 'família', 'decoração']
       },
       {
@@ -262,7 +262,7 @@ export const categories: Category[] = [
         id: 33,
         name: 'Kit Escritório Personalizado',
         description: 'Conjuntos completos para escritório com sua marca',
-        image: '/images/kit-escritorio.jpg',
+        image: 'https://picsum.photos/800/600?random=33',
         tags: ['escritório', 'corporativo', 'kit']
       },
       {
@@ -325,7 +325,7 @@ export const categories: Category[] = [
         id: 41,
         name: 'Caixa Surpresa Personalizada',
         description: 'Caixas temáticas com múltiplos itens personalizados',
-        image: '/images/caixa-surpresa.jpg',
+        image: 'https://picsum.photos/800/600?random=41',
         tags: ['caixa', 'surpresa', 'completo']
       },
       {

@@ -80,7 +80,7 @@ export default function HeroSection() {
           </motion.div>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-glow-green">
-            Zero84 Personalizados
+                              Strike Personalizados
           </h1>
         </motion.div>
 

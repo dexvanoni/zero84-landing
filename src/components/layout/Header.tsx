@@ -59,7 +59,7 @@ export default function Header() {
               <Sparkles className="w-6 h-6 text-white" />
             </div>
             <span className="text-xl font-bold text-glow-green">
-              Zero84
+              Strike
             </span>
           </motion.div>
 

@@ -6,6 +6,9 @@ export interface Product {
   description: string;
   image: string;
   tags: string[];
+  category_id?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface Category {
@@ -13,6 +16,8 @@ export interface Category {
   title: string;
   description: string;
   products: Product[];
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface SocialLink {

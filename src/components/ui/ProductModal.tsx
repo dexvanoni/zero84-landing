@@ -71,8 +71,23 @@ export default function ProductModal({ product, isOpen, onClose }: ProductModalP
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
           onClick={(e) => e.stopPropagation()}
-          className="w-full h-full relative fluid-green overflow-hidden"
+          className="w-full h-full relative overflow-hidden"
+          style={{
+            backgroundImage: product.image ? `url(${product.image})` : undefined,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
         >
+          {/* Overlay escuro sobre a imagem para melhor legibilidade */}
+          {product.image && (
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+          )}
+          
+          {/* Fallback para quando não há imagem */}
+          {!product.image && (
+            <div className="absolute inset-0 fluid-green" />
+          )}
           {/* Efeito de partículas flutuantes */}
           <div className="absolute inset-0">
             {[...Array(12)].map((_, i) => (
@@ -105,17 +120,19 @@ export default function ProductModal({ product, isOpen, onClose }: ProductModalP
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              {/* Ícone principal gigante */}
-              <motion.div
-                className="w-48 h-48 md:w-64 md:h-64 mx-auto mb-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm"
-                whileHover={{ scale: 1.1, rotate: 10 }}
-                transition={{ duration: 0.3 }}
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                <span className="text-8xl md:text-9xl">🎨</span>
-              </motion.div>
+              {/* Ícone principal gigante - só quando não há imagem */}
+              {!product.image && (
+                <motion.div
+                  className="w-48 h-48 md:w-64 md:h-64 mx-auto mb-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm"
+                  whileHover={{ scale: 1.1, rotate: 10 }}
+                  transition={{ duration: 0.3 }}
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  style={{ transformStyle: 'preserve-3d' }}
+                >
+                  <span className="text-8xl md:text-9xl">🎨</span>
+                </motion.div>
+              )}
 
               {/* Nome do produto */}
               <motion.h1

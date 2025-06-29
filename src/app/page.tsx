@@ -1,13 +1,96 @@
 'use client';
 
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/sections/HeroSection';
 import ProductSection from '@/components/sections/ProductSection';
-import { categories } from '@/data/products';
+import { getCategories, populateInitialData, debugDatabase } from '@/lib/database';
+import { diagnoseSupabaseConfig } from '@/lib/supabase';
+import { Category } from '@/types';
+import { categories as staticCategories } from '@/data/products';
 
 export default function Home() {
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const loadingRef = useRef(false); // Prevenir múltiplas chamadas
+
+  useEffect(() => {
+    const loadCategories = async () => {
+      // Prevenir múltiplas execuções simultâneas
+      if (loadingRef.current) {
+        return;
+      }
+
+      loadingRef.current = true;
+
+      try {
+        // Diagnóstico inicial
+        const config = diagnoseSupabaseConfig();
+        
+        // Aguardar um pouco para evitar sobrecarga
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Se Supabase está configurado, fazer debug completo (apenas uma vez)
+        if (config.isConfigured) {
+          await debugDatabase();
+        }
+        
+        let data = await getCategories();
+        
+        // Se não há dados no Supabase e ele está configurado, tenta popular
+        if (data.length === 0 && config.isConfigured) {
+          const populated = await populateInitialData();
+          
+          if (populated) {
+            // Aguardar antes de recarregar
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            data = await getCategories();
+            await debugDatabase();
+          }
+        }
+        
+        // Se há dados do Supabase, usa eles; senão usa dados estáticos
+        if (data.length > 0) {
+          setCategories(data);
+          
+          // Verificar se as categorias têm produtos
+          const totalProducts = data.reduce((sum, cat) => sum + (cat.products?.length || 0), 0);
+          
+          if (totalProducts === 0) {
+            console.warn('⚠️ CRÍTICO: Categorias carregadas mas SEM PRODUTOS!');
+            console.warn('💡 Execute o SQL schema completo no Supabase Dashboard');
+          }
+        } else {
+          console.warn('⚠️ Supabase indisponível - usando dados estáticos');
+          setCategories(staticCategories);
+        }
+      } catch (error) {
+        console.error('💥 ERRO CRÍTICO ao carregar categorias:', error);
+        console.warn('🌐 Problema de rede detectado - usando fallback');
+        setCategories(staticCategories);
+      } finally {
+        setIsLoading(false);
+        loadingRef.current = false;
+      }
+    };
+
+    loadCategories();
+  }, []); // Dependência vazia para executar apenas uma vez
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-green-400 mx-auto mb-4"></div>
+          <p className="text-xl">Carregando Strike Personalizados...</p>
+          <p className="text-sm text-gray-400 mt-2">Buscando categorias e produtos do banco de dados...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
       <Header />
@@ -21,8 +104,14 @@ export default function Home() {
           {categories.map((category, index) => (
             <ProductSection 
               key={category.id} 
-              category={category} 
-              index={index} 
+              id={category.id}
+              title={category.title}
+              description={category.description}
+              categories={categories} // Passando todas as categorias como prop
+              gradient={index % 2 === 0 
+                ? 'bg-gradient-to-br from-green-900/20 to-emerald-900/20' 
+                : 'bg-gradient-to-br from-emerald-900/20 to-teal-900/20'
+              }
             />
           ))}
         </div>
@@ -86,7 +175,7 @@ export default function Home() {
               </motion.a>
               
               <motion.a
-                href="mailto:contato@zero84.com"
+                href="mailto:contato@strike.com"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-transparent green-border-glow green-text-glow hover:bg-green-500/10 hover:text-white font-semibold rounded-full transition-all duration-300 flex items-center space-x-3"

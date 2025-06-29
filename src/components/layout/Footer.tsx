@@ -11,17 +11,17 @@ const socialLinks: SocialLink[] = [
     label: 'WhatsApp'
   },
   {
-    href: 'https://instagram.com/zero84personalizados',
+            href: 'https://instagram.com/strikepersonalizados',
     icon: <Instagram size={24} />,
     label: 'Instagram'
   },
   {
-    href: 'https://facebook.com/zero84personalizados',
+            href: 'https://facebook.com/strikepersonalizados',
     icon: <Facebook size={24} />,
     label: 'Facebook'
   },
   {
-    href: 'mailto:contato@zero84.com',
+            href: 'mailto:contato@strike.com',
     icon: <Mail size={24} />,
     label: 'Email'
   }
@@ -105,7 +105,7 @@ export default function Footer() {
                   <Sparkles className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-3xl font-bold text-glow-green">
-                  Zero84 Personalizados
+                  Strike Personalizados
                 </h3>
               </div>
               <p className="text-gray-300 leading-relaxed max-w-lg">
@@ -119,7 +119,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-2 text-green-300">
                 <Mail className="w-5 h-5" />
-                <span>contato@zero84.com</span>
+                <span>contato@strike.com</span>
               </div>
             </motion.div>
             
@@ -203,7 +203,7 @@ export default function Footer() {
             className="text-center"
           >
             <p className="text-gray-400 text-sm flex items-center justify-center flex-wrap">
-              <span>© 2024 Zero84 Personalizados. Todos os direitos reservados.</span>
+              <span>© 2024 Strike Personalizados. Todos os direitos reservados.</span>
               <span className="mx-2 hidden sm:inline">•</span>
               <span className="flex items-center">
                 Feito com <Heart size={14} className="text-red-400 mx-1" /> para você
