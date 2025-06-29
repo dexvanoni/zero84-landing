@@ -71,7 +71,7 @@ export default function ProductModal({ product, isOpen, onClose }: ProductModalP
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
           onClick={(e) => e.stopPropagation()}
-          className="w-full h-full relative bg-gradient-to-br from-purple-500 via-pink-500 to-blue-500 overflow-hidden"
+          className="w-full h-full relative fluid-green overflow-hidden"
         >
           {/* Efeito de partículas flutuantes */}
           <div className="absolute inset-0">
