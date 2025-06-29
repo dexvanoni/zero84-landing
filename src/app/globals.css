@@ -3,6 +3,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* 🌿 Variáveis do tema verde fluido */
+  --green-primary: #00ff40;       /* Verde brilhante principal */
+  --green-secondary: #00ffbf;     /* Verde ciano fluido */
+  --green-tertiary: #7fff00;      /* Verde limão vibrante */
+  --green-emerald: #50c878;       /* Verde esmeralda */
+  --green-dark: #059b00;          /* Verde escuro profundo */
+  --green-neon: #39ff14;          /* Verde neon */
+  --green-mint: #00ff9f;          /* Verde menta */
+  --green-electric: #0cff0c;      /* Verde elétrico */
 }
 
 @theme inline {
@@ -23,4 +32,316 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🎯 Swiper custom styles - VERDE FLUIDO */
+.swiper-pagination-bullet {
+  background: rgba(0, 255, 64, 0.6) !important;
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 50% !important;
+  transition: all 0.4s ease !important;
+  box-shadow: 0 0 12px rgba(0, 255, 64, 0.4);
+  border: 2px solid rgba(0, 255, 64, 0.3);
+}
+
+.swiper-pagination-bullet-active {
+  background: linear-gradient(45deg, var(--green-primary), var(--green-secondary)) !important;
+  transform: scale(1.4) !important;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 64, 0.8),
+    0 0 30px rgba(0, 255, 191, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.swiper-slide {
+  height: auto !important;
+  display: flex !important;
+  align-items: stretch !important;
+}
+
+/* 🔄 Custom scrollbar - VERDE GRADIENTE FLUIDO */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #0a2e0a, #1a4a1a);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, var(--green-primary), var(--green-emerald));
+  border-radius: 5px;
+  box-shadow: 
+    0 0 15px rgba(0, 255, 64, 0.5),
+    inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, var(--green-tertiary), var(--green-secondary));
+  box-shadow: 
+    0 0 25px rgba(127, 255, 0, 0.7),
+    0 0 35px rgba(0, 255, 191, 0.5);
+}
+
+/* ⚡ Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 🌈 Background pattern - VERDE RADIANTE FLUIDO */
+.bg-pattern {
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(0, 255, 64, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(80, 200, 120, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 20%, rgba(127, 255, 0, 0.08) 0%, transparent 70%),
+    radial-gradient(circle at 30% 80%, rgba(0, 255, 159, 0.10) 0%, transparent 55%);
+  animation: patternFlow 20s ease-in-out infinite;
+}
+
+@keyframes patternFlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* 💎 Glass morphism effect - VERDE TRANSLÚCIDO */
+.glass {
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 255, 64, 0.25);
+  box-shadow: 
+    0 8px 32px rgba(0, 255, 64, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* ✨ Animations aprimoradas */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-25px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 5s ease-in-out infinite;
+}
+
+@keyframes greenGlow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(0, 255, 64, 0.3);
+  }
+  50% { 
+    box-shadow: 
+      0 0 30px rgba(0, 255, 64, 0.6),
+      0 0 40px rgba(127, 255, 0, 0.4);
+  }
+}
+
+.animate-green-glow {
+  animation: greenGlow 3s ease-in-out infinite;
+}
+
+/* 🎨 Typography enhancements */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.text-shadow-green {
+  text-shadow: 
+    0 0 20px rgba(0, 255, 64, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.text-glow-green {
+  color: var(--green-primary);
+  text-shadow: 
+    0 0 10px rgba(0, 255, 64, 0.8),
+    0 0 20px rgba(0, 255, 64, 0.6),
+    0 0 30px rgba(0, 255, 64, 0.4);
+}
+
+/* 💫 Button hover effects - VERDE BRILHANTE FLUIDO */
+.btn-glow:hover {
+  box-shadow: 
+    0 0 25px rgba(0, 255, 64, 0.8),
+    0 0 50px rgba(0, 255, 64, 0.6),
+    0 0 75px rgba(0, 255, 64, 0.4),
+    0 5px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px) scale(1.02);
+  transition: all 0.3s ease;
+}
+
+/* 🔄 Loading states - VERDE GRADIENTE ANIMADO */
+.skeleton {
+  background: linear-gradient(90deg, 
+    #0a2a0a 25%, 
+    #1a5a1a 50%, 
+    #0a3a0a 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 2s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* 🎯 Focus states - VERDE BRILHANTE CONTRASTANTE */
+.focus-visible:focus {
+  outline: 3px solid var(--green-primary);
+  outline-offset: 2px;
+  box-shadow: 
+    0 0 0 6px rgba(0, 255, 64, 0.3),
+    0 0 20px rgba(0, 255, 64, 0.5);
+}
+
+/* 🔮 Custom utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* 🖼️ Modal fullscreen utilities */
+.modal-fullscreen {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999 !important;
+}
+
+/* 🚫 Ensure no body overflow when modal is open */
+body.modal-open {
+  overflow: hidden !important;
+}
+
+/* 🌟 Utilitários extras para o tema verde fluido */
+.green-gradient-primary {
+  background: linear-gradient(135deg, 
+    var(--green-primary), 
+    var(--green-secondary), 
+    var(--green-tertiary)
+  );
+}
+
+.green-gradient-secondary {
+  background: linear-gradient(45deg, 
+    var(--green-dark), 
+    var(--green-emerald), 
+    var(--green-mint)
+  );
+}
+
+.green-gradient-neon {
+  background: linear-gradient(90deg, 
+    var(--green-neon), 
+    var(--green-electric), 
+    var(--green-primary)
+  );
+}
+
+.green-glow {
+  box-shadow: 
+    0 0 20px rgba(0, 255, 64, 0.4),
+    0 0 40px rgba(0, 255, 64, 0.3),
+    inset 0 0 20px rgba(0, 255, 64, 0.1);
+}
+
+.green-glow-strong {
+  box-shadow: 
+    0 0 30px rgba(0, 255, 64, 0.6),
+    0 0 60px rgba(0, 255, 64, 0.4),
+    0 0 90px rgba(0, 255, 64, 0.2);
+}
+
+.green-border {
+  border: 2px solid rgba(0, 255, 64, 0.5);
+}
+
+.green-border-glow {
+  border: 2px solid var(--green-primary);
+  box-shadow: 
+    0 0 15px rgba(0, 255, 64, 0.5),
+    inset 0 0 15px rgba(0, 255, 64, 0.1);
+}
+
+.green-text-glow {
+  color: var(--green-primary);
+  text-shadow: 
+    0 0 10px rgba(0, 255, 64, 0.8),
+    0 0 20px rgba(0, 255, 64, 0.6);
+}
+
+/* 🌊 Efeitos fluidos especiais */
+.fluid-green {
+  background: linear-gradient(45deg, 
+    var(--green-primary), 
+    var(--green-secondary), 
+    var(--green-tertiary), 
+    var(--green-emerald)
+  );
+  background-size: 400% 400%;
+  animation: fluidGreen 8s ease-in-out infinite;
+}
+
+@keyframes fluidGreen {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.pulse-green {
+  background: var(--green-primary);
+  animation: pulseGreen 2s ease-in-out infinite;
+}
+
+@keyframes pulseGreen {
+  0%, 100% { 
+    background: var(--green-primary);
+    box-shadow: 0 0 0 0 rgba(0, 255, 64, 0.7);
+  }
+  50% { 
+    background: var(--green-secondary);
+    box-shadow: 0 0 0 20px rgba(0, 255, 64, 0);
+  }
+}
+
+/* 🎭 Hover effects especiais */
+.hover-green-lift:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 
+    0 10px 30px rgba(0, 255, 64, 0.3),
+    0 0 50px rgba(0, 255, 64, 0.2);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hover-green-glow:hover {
+  background: var(--green-primary);
+  box-shadow: 
+    0 0 40px rgba(0, 255, 64, 0.6),
+    inset 0 0 40px rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
 }
